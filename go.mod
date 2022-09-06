@@ -19,3 +19,8 @@ require (
 	golang.org/x/time v0.0.0-20210723032227-1f47c861a9ac // indirect
 	google.golang.org/grpc v1.39.0 // indirect
 )
+
+replace (
+	github.com/chaosblade-io/chaosblade-exec-os v1.7.0 => gitlab.x-city.com.cn/chaosblade/chaosblade-exec-os v1.7.0
+	github.com/chaosblade-io/chaosblade-spec-go v1.7.0 => gitlab.x-city.com.cn/chaosblade/chaosblade-spec-go v1.7.0
+)
