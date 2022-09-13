@@ -25,6 +25,7 @@ import (
 	"github.com/chaosblade-io/chaosblade-exec-os/exec/network"
 	"github.com/chaosblade-io/chaosblade-exec-os/exec/network/tc"
 	"github.com/chaosblade-io/chaosblade-exec-os/exec/process"
+	"github.com/chaosblade-io/chaosblade-exec-os/exec/script"
 	"github.com/chaosblade-io/chaosblade-spec-go/spec"
 )
 
@@ -156,6 +157,34 @@ blade create cri file delete --filepath /home/logs/nginx.log --target /temp --au
 		}
 	}
 	return fileCommandSpec
+}
+
+func newScriptCommandSpecForDocker() spec.ExpModelCommandSpec {
+	scriptCommandSpec := script.NewScriptCommandModelSpec()
+	for _, action := range scriptCommandSpec.Actions() {
+		v := interface{}(action)
+		switch v.(type) {
+		case *script.ScriptDelayActionCommand:
+			action.SetLongDesc("Add commands to the script function  experiment scenario in container")
+			action.SetExample(
+				`# Add commands to the script "start0() { sleep 10.000000 ...}"
+blade create cri script delay --time 10000 --file test.sh --function-name start0 --container-id ee54f1e61c08 
+`)
+		case *script.ScriptExitActionCommand:
+			action.SetLongDesc("Add commands to the script function scenario in container")
+			action.SetExample(
+				`# Add commands to the script "start0() { echo this-is-error-message; exit 1; ... }"
+blade create cri script exit --exit-code 1 --exit-message this-is-error-message --file test.sh --function-name start0
+`)
+
+		case *script.ScripExecuteActionCommand:
+			action.SetLongDesc("Execute script scenario in container")
+			action.SetExample(`# execute script or execute script with many file-args"
+blade create cri script execute --file test.sh --file-args this:is:file:args:string --container-id ee54f1e61c08
+`)
+		}
+	}
+	return scriptCommandSpec
 }
 
 func newMemCommandModelSpecForDocker() spec.ExpModelCommandSpec {
