@@ -77,6 +77,7 @@ func NewDockerExpModelSpec() *DockerExpModelSpec {
 		newDiskFillCommandSpecForDocker(),
 		newMemCommandModelSpecForDocker(),
 		newFileCommandSpecForDocker(),
+		newScriptCommandSpecForDocker(),
 		newProcessCommandModelSpecForDocker(),
 	}
 

@@ -71,6 +71,7 @@ func NewDockerExpModelSpec() *DockerExpModelSpec {
 		newDiskFillCommandSpecForDocker(),
 		newMemCommandModelSpecForDocker(),
 		newFileCommandSpecForDocker(),
+		newScriptCommandSpecForDocker(),
 	}
 	execInContainerModelSpecs = append(execInContainerModelSpecs, javaExpModelSpecs...)
 	containerSelfModelSpec := NewContainerCommandSpec()
