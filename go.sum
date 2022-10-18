@@ -93,8 +93,8 @@ github.com/buger/jsonparser v0.0.0-20180808090653-f4dd9f5a6b44/go.mod h1:bbYlZJ7
 github.com/bugsnag/bugsnag-go v0.0.0-20141110184014-b1d153021fcd/go.mod h1:2oa8nejYd4cQ/b0hMIopN0lCRxU0bueqREvZLWFrtK8=
 github.com/bugsnag/osext v0.0.0-20130617224835-0dd3f918b21b/go.mod h1:obH5gd0BsqsP2LwDJ9aOkm/6J86V6lyAXCoQWGw3K50=
 github.com/bugsnag/panicwrap v0.0.0-20151223152923-e2c28503fcd0/go.mod h1:D/8v3kj0zr8ZAKg1AQ6crr+5VwKN5eIywRkfhyM/+dE=
-github.com/caofujiang/chaosblade-exec-os v1.7.2 h1:ywDVqVl85At3N5c6khw5xGXGsxdvKuPuvqxDaFQcTvo=
-github.com/caofujiang/chaosblade-exec-os v1.7.2/go.mod h1:OiLWy8iJcG+EA9hRuYX5EfwjCt6UjBll1jJJLo+qg+0=
+github.com/caofujiang/chaosblade-exec-os v1.7.7 h1:Pl3SUC31zlZRozSD+dDChhHe0IyIX0H4W117LIfKfL4=
+github.com/caofujiang/chaosblade-exec-os v1.7.7/go.mod h1:vB7jqDB3FwPbRSEzu+ihPUUmLCqRsQBp9rDVfv40L3I=
 github.com/caofujiang/chaosblade-spec-go v1.7.0 h1:z5xpih1qf90jF8lJBoN4zHDK6QtKXrVPbY3ehgYxyfk=
 github.com/caofujiang/chaosblade-spec-go v1.7.0/go.mod h1:GMDRCEt9jw2+PdX+S2eKBg4ES6PENRc7xsLohWJWM6s=
 github.com/census-instrumentation/opencensus-proto v0.2.1/go.mod h1:f6KPmirojxKA12rnyqOA5BBL4O983OfeGPqjHWSTneU=
@@ -295,6 +295,8 @@ github.com/go-openapi/jsonreference v0.19.3/go.mod h1:rjx6GuL8TTa9VaixXglHmQmIL9
 github.com/go-openapi/spec v0.19.3/go.mod h1:FpwSN1ksY1eteniUU7X0N/BgJ7a4WvBFVA8Lj9mJglo=
 github.com/go-openapi/swag v0.19.2/go.mod h1:POnQmlKehdgb5mhVOsnJFsivZCEZ/vjK9gh66Z9tfKk=
 github.com/go-openapi/swag v0.19.5/go.mod h1:POnQmlKehdgb5mhVOsnJFsivZCEZ/vjK9gh66Z9tfKk=
+github.com/go-sql-driver/mysql v1.6.0 h1:BCTh4TKNUYmOmMUcQ3IipzF5prigylS7XXjEkfCHuOE=
+github.com/go-sql-driver/mysql v1.6.0/go.mod h1:DCzpHaOWr8IXmIStZouvnhqoel9Qv2LBy8hT2VhHyBg=
 github.com/go-stack/stack v1.8.0/go.mod h1:v0f6uXyyMGvRgIKkXu+yp6POWl0qKG85gN/melR3HDY=
 github.com/godbus/dbus v0.0.0-20151105175453-c7fdd8b5cd55/go.mod h1:/YcGZj5zSblfDWMMoOzV4fas9FZnQYTkDnsGvmh2Grw=
 github.com/godbus/dbus v0.0.0-20180201030542-885f9cc04c9c/go.mod h1:/YcGZj5zSblfDWMMoOzV4fas9FZnQYTkDnsGvmh2Grw=
