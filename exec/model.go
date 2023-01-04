@@ -180,7 +180,7 @@ blade create cri script exit --exit-code 1 --exit-message this-is-error-message 
 		case *script.ScripExecuteActionCommand:
 			action.SetLongDesc("Execute script scenario in container")
 			action.SetExample(`# execute script or execute script with many file-args"
-blade create cri script execute --file test.sh --file-args this:is:file:args:string --dsn=root:Spx#123456@tcp(10.148.55.116:3306)/blade_ops  --dsn=root:Spx#123456@tcp(10.148.55.116:3306)/blade_ops   --container-id ee54f1e61c08
+blade create cri script execute --file test.sh --file-args this:is:file:args:string   --container-id ee54f1e61c08
 `)
 		}
 	}
