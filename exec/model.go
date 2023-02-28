@@ -61,6 +61,14 @@ blade create cri network drop --source-port 80 --network-traffic in --container-
 			action.SetExample(
 				`# The domain name www.baidu.com is not accessible
 blade create cri network dns --domain www.baidu.com --ip 10.0.0.0 --container-id ee54f1e61c08`)
+		case *network.DownActionSpec:
+			action.SetExample(
+				`# The domain name www.baidu.com is not accessible
+blade create cri network down --ip=172.16.93.128 --duration=5  --port 5201 --rate=10m`)
+		case *network.FloodActionSpec:
+			action.SetExample(
+				`# The domain name www.baidu.com is not accessible
+blade create cri network flood --ip=172.16.93.128 --duration=5  --port 5201 --rate=10m`)
 		case *tc.LossActionSpec:
 			action.SetExample(`# Access to native 8080 and 8081 ports lost 70% of packets
 blade create cri network loss --percent 70 --interface eth0 --local-port 8080,8081 --container-id ee54f1e61c08
