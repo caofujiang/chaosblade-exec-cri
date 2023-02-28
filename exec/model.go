@@ -21,6 +21,7 @@ import (
 	"github.com/chaosblade-io/chaosblade-exec-os/exec/cpu"
 	"github.com/chaosblade-io/chaosblade-exec-os/exec/disk"
 	"github.com/chaosblade-io/chaosblade-exec-os/exec/file"
+	"github.com/chaosblade-io/chaosblade-exec-os/exec/http"
 	"github.com/chaosblade-io/chaosblade-exec-os/exec/mem"
 	"github.com/chaosblade-io/chaosblade-exec-os/exec/network"
 	"github.com/chaosblade-io/chaosblade-exec-os/exec/network/tc"
@@ -193,6 +194,40 @@ blade create cri script execute --file test.sh --file-args this:is:file:args:str
 		}
 	}
 	return scriptCommandSpec
+}
+
+func newHTTPCommandSpecForDocker() spec.ExpModelCommandSpec {
+	httpCommandSpec := http.NewHttpCommandModelSpec()
+	for _, action := range httpCommandSpec.Actions() {
+		v := interface{}(action)
+		switch v.(type) {
+		case *http.DelayHttpActionCommandSpec:
+			action.SetLongDesc("Add commands to the http delay experiment scenario in container")
+			action.SetExample(
+				`# Add commands to the http2 10000(10s) delay experiment
+blade create cri http2 delay --url https://www.taobao.com --time 10000 --container-id ee54f1e61c08 
+
+# Add commands to the http2 10000(10s) delay request
+blade create cri http2 delay --url https://www.taobao.com --target request --time 10000 --container-id ee54f1e61c08 
+
+# Add commands to the http2 10000(10s) delay response
+blade create cri http2 delay --url https://www.taobao.com --target response --time 10000 --container-id ee54f1e61c08
+`)
+		case *http.RequestHttpActionCommandSpec:
+			action.SetLongDesc("Add commands to the http count request  experiment scenario in container")
+			action.SetExample(
+				`# Add commands to the http2 count request experiment
+blade create cri http2 request --url https://www.taobao.com --count 10 --container-id ee54f1e61c08
+`)
+		case *http.TimeOutHttpActionCommandSpec:
+			action.SetLongDesc("Add commands to the http timeout  experiment scenario in container")
+			action.SetExample(
+				`# Add commands to the http2 timeout experiment
+blade create cri http2 timeout --url https://www.taobao.com --time 1000 --container-id ee54f1e61c08
+`)
+		}
+	}
+	return httpCommandSpec
 }
 
 func newMemCommandModelSpecForDocker() spec.ExpModelCommandSpec {

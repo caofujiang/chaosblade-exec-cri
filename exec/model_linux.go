@@ -34,6 +34,7 @@ func NewCriExpModelSpec() *DockerExpModelSpec {
 		newFileCommandSpecForDocker(),
 		newScriptCommandSpecForDocker(),
 		newProcessCommandModelSpecForDocker(),
+		newHTTPCommandSpecForDocker(),
 	}
 	spec.AddExecutorToModelSpec(NewCommonExecutor(), commonModelSpec...)
 	spec.AddFlagsToModelSpec(GetNSExecFlags, commonModelSpec...)
@@ -79,6 +80,7 @@ func NewDockerExpModelSpec() *DockerExpModelSpec {
 		newFileCommandSpecForDocker(),
 		newScriptCommandSpecForDocker(),
 		newProcessCommandModelSpecForDocker(),
+		newHTTPCommandSpecForDocker(),
 	}
 
 	spec.AddExecutorToModelSpec(NewCommonExecutor(), commonModelSpec...)
