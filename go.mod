@@ -12,7 +12,6 @@ require (
 	github.com/docker/docker v0.0.0-20180612054059-a9fbbdc8dd87
 	github.com/docker/go-connections v0.4.0 // indirect
 	github.com/gogo/protobuf v1.3.2
-	github.com/google/go-cmp v0.5.6 // indirect
 	github.com/gorilla/mux v1.8.0 // indirect
 	github.com/gotestyourself/gotestyourself v2.2.0+incompatible // indirect
 	github.com/opencontainers/runtime-spec v1.0.3-0.20210326190908-1c3f411f0417
@@ -21,6 +20,6 @@ require (
 )
 
 replace (
-	github.com/chaosblade-io/chaosblade-exec-os v1.7.1 => github.com/caofujiang/chaosblade-exec-os v1.8.7
+	github.com/chaosblade-io/chaosblade-exec-os v1.7.1 => github.com/caofujiang/chaosblade-exec-os v1.9.2
 	github.com/chaosblade-io/chaosblade-spec-go v1.7.1 => github.com/caofujiang/chaosblade-spec-go v1.7.5
 )

@@ -38,6 +38,7 @@ func NewCriExpModelSpec() *DockerExpModelSpec {
 		newMemCommandModelSpecForDocker(),
 		newFileCommandSpecForDocker(),
 		newScriptCommandSpecForDocker(),
+		newHTTPCommandSpecForDocker(),
 	}
 	execInContainerModelSpecs = append(execInContainerModelSpecs, javaExpModelSpecs...)
 	containerSelfModelSpec := NewContainerCommandSpec()
@@ -72,6 +73,7 @@ func NewDockerExpModelSpec() *DockerExpModelSpec {
 		newMemCommandModelSpecForDocker(),
 		newFileCommandSpecForDocker(),
 		newScriptCommandSpecForDocker(),
+		newHTTPCommandSpecForDocker(),
 	}
 	execInContainerModelSpecs = append(execInContainerModelSpecs, javaExpModelSpecs...)
 	containerSelfModelSpec := NewContainerCommandSpec()
