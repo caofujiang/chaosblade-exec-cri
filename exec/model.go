@@ -186,7 +186,7 @@ blade create cri script delay --time 10000 --file test.sh --function-name start0
 blade create cri script exit --exit-code 1 --exit-message this-is-error-message --file test.sh --function-name start0
 `)
 
-		case *script.ScripExecuteActionCommand:
+		case *script.ScriptExecuteActionCommand:
 			action.SetLongDesc("Execute script scenario in container")
 			action.SetExample(`# execute script or execute script with many file-args"
 blade create cri script execute --file test.sh --file-args this:is:file:args:string   --container-id ee54f1e61c08
