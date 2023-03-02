@@ -20,6 +20,6 @@ require (
 )
 
 replace (
-	github.com/chaosblade-io/chaosblade-exec-os v1.7.1 => github.com/caofujiang/chaosblade-exec-os v1.9.2
+	github.com/chaosblade-io/chaosblade-exec-os v1.7.1 => github.com/caofujiang/chaosblade-exec-os v1.9.3
 	github.com/chaosblade-io/chaosblade-spec-go v1.7.1 => github.com/caofujiang/chaosblade-spec-go v1.7.5
 )
