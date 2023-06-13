@@ -1,6 +1,6 @@
 module github.com/chaosblade-io/chaosblade-exec-cri
 
-go 1.17
+go 1.20
 
 require (
 	github.com/chaosblade-io/chaosblade-exec-os v1.7.2
@@ -69,6 +69,6 @@ require (
 )
 
 replace (
-	github.com/chaosblade-io/chaosblade-exec-os v1.7.2 => github.com/caofujiang/chaosblade-exec-os v1.0.3
-	github.com/chaosblade-io/chaosblade-spec-go v1.7.2 => github.com/caofujiang/chaosblade-spec-go v1.0.2
+	github.com/chaosblade-io/chaosblade-exec-os v1.7.2 => github.com/caofujiang/chaosblade-exec-os v1.9.6
+	github.com/chaosblade-io/chaosblade-spec-go v1.7.2 => github.com/caofujiang/chaosblade-spec-go v1.7.7
 )
