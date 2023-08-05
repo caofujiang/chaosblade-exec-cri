@@ -3,8 +3,8 @@ module github.com/chaosblade-io/chaosblade-exec-cri
 go 1.20
 
 require (
-	github.com/chaosblade-io/chaosblade-exec-os v1.7.2
-	github.com/chaosblade-io/chaosblade-spec-go v1.7.2
+	github.com/chaosblade-io/chaosblade-exec-os v1.7.3
+	github.com/chaosblade-io/chaosblade-spec-go v1.7.3
 	github.com/containerd/cgroups v1.0.2-0.20210605143700-23b51209bf7b
 	github.com/containerd/containerd v1.5.6
 	github.com/docker/docker v0.0.0-20180612054059-a9fbbdc8dd87
@@ -39,6 +39,7 @@ require (
 	github.com/gotestyourself/gotestyourself v2.2.0+incompatible // indirect
 	github.com/howeyc/gopass v0.0.0-20190910152052-7cb4b85ec19c // indirect
 	github.com/klauspost/compress v1.11.13 // indirect
+	github.com/kr/text v0.2.0 // indirect
 	github.com/moby/locker v1.0.1 // indirect
 	github.com/moby/sys/mountinfo v0.4.1 // indirect
 	github.com/opencontainers/go-digest v1.0.0 // indirect
@@ -46,7 +47,7 @@ require (
 	github.com/opencontainers/runc v1.0.2 // indirect
 	github.com/opencontainers/selinux v1.8.2 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
-	github.com/rogpeppe/go-internal v1.10.0 // indirect
+	github.com/rogpeppe/go-internal v1.11.0 // indirect
 	github.com/shirou/gopsutil v3.21.6+incompatible // indirect
 	github.com/sirupsen/logrus v1.8.1 // indirect
 	github.com/tklauser/go-sysconf v0.3.7 // indirect
@@ -55,7 +56,7 @@ require (
 	go.uber.org/automaxprocs v1.3.0 // indirect
 	golang.org/x/crypto v0.1.0 // indirect
 	golang.org/x/net v0.1.0 // indirect
-	golang.org/x/sync v0.0.0-20201207232520-09787c993a3a // indirect
+	golang.org/x/sync v0.0.0-20220722155255-886fb9371eb4 // indirect
 	golang.org/x/sys v0.1.0 // indirect
 	golang.org/x/term v0.1.0 // indirect
 	golang.org/x/text v0.4.0 // indirect
@@ -68,6 +69,6 @@ require (
 )
 
 replace (
-	github.com/chaosblade-io/chaosblade-exec-os v1.7.2 => github.com/caofujiang/chaosblade-exec-os v1.9.6
-	github.com/chaosblade-io/chaosblade-spec-go v1.7.2 => github.com/caofujiang/chaosblade-spec-go v1.7.7
+	github.com/chaosblade-io/chaosblade-exec-os v1.7.3 => github.com/caofujiang/chaosblade-exec-os v1.9.8
+	github.com/chaosblade-io/chaosblade-spec-go v1.7.3 => github.com/caofujiang/chaosblade-spec-go v1.7.7
 )
