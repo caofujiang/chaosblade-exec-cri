@@ -69,6 +69,6 @@ require (
 )
 
 replace (
-	github.com/chaosblade-io/chaosblade-exec-os v1.7.3 => github.com/caofujiang/chaosblade-exec-os v1.9.13
+	github.com/chaosblade-io/chaosblade-exec-os v1.7.3 => github.com/caofujiang/chaosblade-exec-os v1.9.14
 	github.com/chaosblade-io/chaosblade-spec-go v1.7.3 => github.com/caofujiang/chaosblade-spec-go v1.7.9
 )
