@@ -10,6 +10,8 @@ require (
 	github.com/docker/docker v0.0.0-20180612054059-a9fbbdc8dd87
 	github.com/gogo/protobuf v1.3.2
 	github.com/opencontainers/runtime-spec v1.0.3-0.20210326190908-1c3f411f0417
+	google.golang.org/grpc v1.39.0
+	k8s.io/cri-api v0.20.6
 )
 
 require (
@@ -62,7 +64,6 @@ require (
 	golang.org/x/text v0.4.0 // indirect
 	golang.org/x/time v0.0.0-20210723032227-1f47c861a9ac // indirect
 	google.golang.org/genproto v0.0.0-20201110150050-8816d57aaa9a // indirect
-	google.golang.org/grpc v1.39.0 // indirect
 	google.golang.org/protobuf v1.26.0 // indirect
 	gopkg.in/natefinch/lumberjack.v2 v2.0.0 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect

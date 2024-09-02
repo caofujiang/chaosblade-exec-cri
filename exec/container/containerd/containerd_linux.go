@@ -203,7 +203,7 @@ func (c *Client) ExecContainer(ctx context.Context, containerId, command string)
 	return container.ExecContainer(ctx, id, command)
 }
 
-//ExecuteAndRemove: create and start a container for executing a command, and remove the container
+// ExecuteAndRemove: create and start a container for executing a command, and remove the container
 func (c *Client) ExecuteAndRemove(ctx context.Context, config *containertype.Config, hostConfig *containertype.HostConfig,
 	networkConfig *network.NetworkingConfig, containerName string, removed bool, timeout time.Duration,
 	command string, containerInfo container.ContainerInfo) (containerId string, output string, err error, code int32) {
@@ -224,7 +224,6 @@ func (c *Client) ExecuteAndRemove(ctx context.Context, config *containertype.Con
 		return "", "", fmt.Errorf(spec.CreateContainerFailed.Sprintf("target container network namespace path is nil")), spec.CreateContainerFailed.Code
 	}
 
-	// 2. pull image befor create container
 	if _, err := c.cclient.Pull(c.Ctx, config.Image, containerd.WithPullUnpack, containerd.WithPullSnapshotter(snapshotter)); err != nil {
 		return "", "", fmt.Errorf(spec.ImagePullFailed.Sprintf(config.Image, err.Error())), spec.ImagePullFailed.Code
 	}

@@ -27,6 +27,8 @@ func GetClientByRuntime(expModel *spec.ExpModel) (container.Container, error) {
 	switch expModel.ActionFlags[ContainerRuntime.Name] {
 	case container.ContainerdRuntime:
 		return containerd.NewClient(expModel.ActionFlags[EndpointFlag.Name], expModel.ActionFlags[ContainerNamespace.Name])
+	case container.CRIORuntime:
+		return containerd.NewClient(expModel.ActionFlags[EndpointFlag.Name], expModel.ActionFlags[ContainerNamespace.Name])
 	default:
 		return docker.NewClient(expModel.ActionFlags[EndpointFlag.Name])
 		//default:
