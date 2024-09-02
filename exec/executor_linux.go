@@ -19,6 +19,7 @@ package exec
 import (
 	"github.com/chaosblade-io/chaosblade-exec-cri/exec/container"
 	"github.com/chaosblade-io/chaosblade-exec-cri/exec/container/containerd"
+	"github.com/chaosblade-io/chaosblade-exec-cri/exec/container/crio"
 	"github.com/chaosblade-io/chaosblade-exec-cri/exec/container/docker"
 	"github.com/chaosblade-io/chaosblade-spec-go/spec"
 )
@@ -28,7 +29,7 @@ func GetClientByRuntime(expModel *spec.ExpModel) (container.Container, error) {
 	case container.ContainerdRuntime:
 		return containerd.NewClient(expModel.ActionFlags[EndpointFlag.Name], expModel.ActionFlags[ContainerNamespace.Name])
 	case container.CRIORuntime:
-		return containerd.NewClient(expModel.ActionFlags[EndpointFlag.Name], expModel.ActionFlags[ContainerNamespace.Name])
+		return crio.NewClient(expModel.ActionFlags[EndpointFlag.Name], expModel.ActionFlags[ContainerNamespace.Name])
 	default:
 		return docker.NewClient(expModel.ActionFlags[EndpointFlag.Name])
 		//default:

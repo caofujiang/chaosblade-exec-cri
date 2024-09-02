@@ -22,7 +22,7 @@ const (
 
 var cli *CRIClient
 
-// NewClient 创建与 cri-o 的客户端连接
+// NewClient 创建与 crio 的客户端连接
 type CRIClient struct {
 	runtimeService v1.RuntimeServiceClient
 	conn           *grpc.ClientConn
@@ -49,9 +49,9 @@ func NewClient(endpoint string, timeout time.Duration) (*CRIClient, error) {
 	conn, err := grpc.DialContext(ctx, endpoint, dialOptions...)
 	if err != nil {
 		if ctx.Err() == context.DeadlineExceeded {
-			return nil, fmt.Errorf("failed to connect to cri-o endpoint %s: %w", endpoint, ctx.Err())
+			return nil, fmt.Errorf("failed to connect to crio endpoint %s: %w", endpoint, ctx.Err())
 		}
-		return nil, fmt.Errorf("failed to connect to cri-o endpoint %s: %v", endpoint, err.Error())
+		return nil, fmt.Errorf("failed to connect to crio endpoint %s: %v", endpoint, err.Error())
 	}
 	runtimeService := v1.NewRuntimeServiceClient(conn)
 	imageService := v1.NewImageServiceClient(conn)
