@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"github.com/chaosblade-io/chaosblade-exec-cri/exec/container"
 	"github.com/chaosblade-io/chaosblade-spec-go/spec"
+	"github.com/containerd/containerd/namespaces"
 	containertype "github.com/docker/docker/api/types/container"
 	"github.com/docker/docker/api/types/network"
 	"github.com/docker/docker/api/types/strslice"
@@ -15,9 +16,8 @@ import (
 )
 
 const (
-	// /run/crio/crio.sock
-	DefaultStateUinxAddress = "unix:///var/run/crio/crio.sock"
-	DefaultContainerdNS     = "k8s.io"
+	DefaultStateUinxAddress    = "unix:///var/run/crio/crio.sock"
+	DefaultContainerdNameSpace = "k8s.io"
 )
 
 var cli *CRIClient
@@ -27,12 +27,11 @@ type CRIClient struct {
 	runtimeService v1.RuntimeServiceClient
 	conn           *grpc.ClientConn
 	imageService   v1.ImageServiceClient
+	Ctx            context.Context
+	Cancel         context.CancelFunc
 }
 
-func NewClient(endpoint string, timeout time.Duration) (*CRIClient, error) {
-	ctx, cancel := context.WithTimeout(context.Background(), timeout)
-	defer cancel()
-
+func NewClient(endpoint string, namespace string) (*CRIClient, error) {
 	dialOptions := []grpc.DialOption{
 		grpc.WithInsecure(), // 可以考虑使用安全连接
 		grpc.WithBlock(),
@@ -41,10 +40,15 @@ func NewClient(endpoint string, timeout time.Duration) (*CRIClient, error) {
 	if endpoint == "" {
 		endpoint = DefaultStateUinxAddress
 	}
-	//if namespace == "" {
-	//	namespace = DefaultContainerdNS
-	//	//namespace = "chaos"
-	//}
+	if namespace == "" {
+		namespace = DefaultContainerdNameSpace
+	}
+	var (
+		ctx    = context.Background()
+		cancel context.CancelFunc
+	)
+	ctx = namespaces.WithNamespace(ctx, namespace)
+	ctx, cancel = context.WithCancel(ctx)
 
 	conn, err := grpc.DialContext(ctx, endpoint, dialOptions...)
 	if err != nil {
@@ -59,6 +63,8 @@ func NewClient(endpoint string, timeout time.Duration) (*CRIClient, error) {
 		runtimeService: runtimeService,
 		conn:           conn,
 		imageService:   imageService,
+		Ctx:            ctx,
+		Cancel:         cancel,
 	}, nil
 }
 
@@ -160,18 +166,18 @@ func (c *CRIClient) GetContainerByName(ctx context.Context, containerName string
 }
 
 // 标签选择器从容器运行时中筛选容器
-func (c *CRIClient) GetContainerByLabelSelector(ctx context.Context, labelSelector map[string]string) (container.ContainerInfo, error, int32) {
+func (c *CRIClient) GetContainerByLabelSelector(labels map[string]string) (container.ContainerInfo, error, int32) {
 	var containerInfo container.ContainerInfo
 	// 获取所有容器列表
 	listRequest := &v1.ListContainersRequest{}
-	listResponse, err := c.runtimeService.ListContainers(ctx, listRequest)
+	listResponse, err := c.runtimeService.ListContainers(c.Ctx, listRequest)
 	if err != nil {
 		return containerInfo, fmt.Errorf("failed to list containers: %v", err), spec.ContainerExecFailed.Code
 	}
 	var filteredContainers []*v1.Container
 	// 遍历所有容器并应用标签过滤
 	for _, container := range listResponse.Containers {
-		if matchLabels(container, labelSelector) {
+		if matchLabels(container, labels) {
 			filteredContainers = append(filteredContainers, container)
 		}
 	}
