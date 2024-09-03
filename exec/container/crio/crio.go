@@ -246,8 +246,9 @@ func (c *CRIClient) ExecContainer(ctx context.Context, containerId, command stri
 
 // ExecuteAndRemove: create and start a container for executing a command, and remove the container
 // ExecuteAndRemove 在容器中执行命令，然后删除容器
+// todo
 func (c *CRIClient) ExecuteAndRemove(ctx context.Context, config *containertype.Config, hostConfig *containertype.HostConfig,
-	networkConfig *network.NetworkingConfig, cmd string, containerName string, removed bool, timeout time.Duration) (containerId string, output string, err error, code int32) {
+	networkConfig *network.NetworkingConfig, containerName string, removed bool, timeout time.Duration, command string, containerInfo container.ContainerInfo) (containerId string, output string, err error, code int32) {
 	// 创建容器
 	containerId, err = c.CreateContainer(ctx, containerName, config, hostConfig, networkConfig)
 	if err != nil {
@@ -262,7 +263,7 @@ func (c *CRIClient) ExecuteAndRemove(ctx context.Context, config *containertype.
 		return "", "", fmt.Errorf("StartContainer error:%v", err), spec.CreateContainerFailed.Code
 	}
 	var cmdslice strslice.StrSlice
-	cmdslice = append(cmdslice, cmd)
+	cmdslice = append(cmdslice, command)
 	if config.Cmd == nil {
 		config.Cmd = cmdslice
 	}
